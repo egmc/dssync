@@ -1,13 +1,8 @@
 <?php
-use Symfony\Component\Yaml\Dumper;
-
 use DsSync\DsSync;
 use Symfony\Component\Yaml\Parser;
 
-ini_set( 'display_errors', 1 );
-
 require dirname( __DIR__)  . "/vendor/autoload.php";
-
 /**
  * DsSync
  *
@@ -22,8 +17,7 @@ require dirname( __DIR__)  . "/vendor/autoload.php";
 define('DS_SYNC_CONF', dirname(__DIR__) . "/conf/" . basename(__FILE__, '.php') . ".yaml");
 // テンプレート
 define('DS_SYNC_TEMPLATE_DIR', dirname(__DIR__) . "/template");
-define('DS_SYNC_TEMPLATE_FILE', 'index.html');
-//define('DS_SYNC_TEMPLATE_FILE', 'dssync.xhtml');
+define('DS_SYNC_TEMPLATE_FILE', 'dssync.xhtml');
 //-------------setting
 
 
@@ -56,24 +50,16 @@ if (isset($_POST['mode'])) {
 	$mode = $_POST['mode'];
 }
 
-
-$conf = array();		//コンフから取得ぱらめーた
-$param = $_POST; 	//ポストからパラメータ取得
+//configから取得するパラメータ
+$conf = array();
+$param = $_POST;
 
 $twigenv = new Twig_Environment(new Twig_Loader_Filesystem(DS_SYNC_TEMPLATE_DIR), array('cache' => false));
 $template = $twigenv->loadTemplate(DS_SYNC_TEMPLATE_FILE);
 
-include __DIR__ .  '/Spyc.php';
-
-$yamlfile = dirname(__DIR__) . "/conf/dssync.yaml";
 // 設定ファイル読み込み
-$conf = yaml_parse_file($yamlfile);
-$conf = Spyc::YAMLLoad($yamlfile);
 $parser = new Parser();
-$conf = $parser->parse(file_get_contents($yamlfile));
-//$dumper = new Dumper();
-//echo $dumper->dump($conf, 3);
-//$log->debug($conf);
+$conf = $parser->parse(file_get_contents(DS_SYNC_CONF));
 
 // シンク部品オブジェクト生成
 $dssync = new DsSync($conf);
@@ -87,7 +73,6 @@ $data['dssync_version'] ="DsSync version " .DsSync::VERSION;
 //rsync
 $data['version_str'] = $dssync->getRsyncVersion();
 $dirlist = $dssync->getDirList();
-//Log::sdebug($dirlist);
 $data['is_repoditory_defined'] = $dssync->getIsRepositoryDefined();
 
 // dirlist作成
@@ -187,9 +172,4 @@ if (!empty($param['exclude_file_list'])) {
 	$data['posted_exclude_file_list'] = $param['exclude_file_list'];
 }
 
-//Log::sdebug($confyaml);
-//Log::sdebug($data);
-//$log->debug($server_list);
-
-// 結果出力
 $template->display($data);

@@ -3,7 +3,7 @@ title: "ProductionDeploy"
 # rsyncコマンドを定義
 rsync_cmd: rsync
 # シンク元となるフォルダ、必ず/で終わるように
-from_path: /home/eg/dssync/
+from_path: /path/to/from/
 # シンク除外フォルダリスト
 exclude_dir_list:
  - tmp
