@@ -11,13 +11,13 @@ require dirname( __DIR__)  . "/vendor/autoload.php";
  *
  * @author eg
  */
-	
+ini_set('display_errors', 1);
 //-------------setting
 // conf
 define('DS_SYNC_CONF', dirname(__DIR__) . "/conf/" . basename(__FILE__, '.php') . ".yaml");
 // テンプレート
 define('DS_SYNC_TEMPLATE_DIR', dirname(__DIR__) . "/template");
-define('DS_SYNC_TEMPLATE_FILE', 'dssync.xhtml');
+define('DS_SYNC_TEMPLATE_FILE', 'dssync.html');
 //-------------setting
 
 
@@ -71,7 +71,7 @@ $data['title'] = $conf['title'];
 // プログラムバージョン
 $data['dssync_version'] ="DsSync version " .DsSync::VERSION;
 //rsync
-$data['version_str'] = $dssync->getRsyncVersion();
+$data['rsync_version'] = $dssync->getRsyncVersion();
 $dirlist = $dssync->getDirList();
 $data['is_repoditory_defined'] = $dssync->getIsRepositoryDefined();
 
@@ -118,7 +118,6 @@ switch ($mode) {
 		$data['server_list'] = $server_list;
 		
 		$file_list = $dssync->getFirstServerResultList();
-		//$log->debug($file_list);
 		
 		//ローカル判定
 		if ($server_list[0]['is_local']) {

@@ -12,7 +12,7 @@
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <style>
-      body { padding-top: 60px; /* 60px to make the container go all the way
+      body { padding-top: 42px; /* 60px to make the container go all the way
       to the bottom of the topbar */ }
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -22,8 +22,9 @@
       </script>
     <![endif]-->
     <!-- Le fav and touch icons -->
+    <link href="css/main.css" rel="stylesheet">
     <style>
-      undefined
+      
     </style>
   <script>
     DsSync = {};
@@ -58,23 +59,19 @@
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">
+          <a class="brand" href="{{self}}">
             {{title}} - DsSync
           </a>
-          <ul class="nav">
-            <li>
-            </li>
-            <li>
-            </li>
-            <li>
-            </li>
-          </ul>
+          <div class="version_info">
+            <p>{{dssync_version}}</p>
+            <p>{{rsync_version}}</p>
+          </div>
+
         </div>
       </div>
     </div>
 
     <div class="container">
-
     <div class="btn-toolbar">
       <div class="btn-group">
         <input class="btn" type="submit" name="mode" value="reset" />
@@ -85,6 +82,7 @@
         <input type="submit" class="btn" name="mode" value="sync" onclick="if(!confirm('シンクを実行します')){return false;}" />
       </div>
     </div>
+    {% if messages or errors %}
     <div class="alert">
       {% if messages %}
         <ul class="messages">
@@ -101,6 +99,7 @@
         </ul>
       {% endif %}
     </div>
+    {% endif %}
 
       <div class="row">
         <div class="span4">
@@ -133,7 +132,10 @@
               </tr>
               {%for syncfile in file_list.delete %}
               <tr>
-                <td>{{syncfile}}</td>
+                <td>
+                  <input name="exclude_file_list[]" value="{{syncfile}}" type="checkbox"{% if dir.is_checked %} checked="checked"{% endif %} />
+                  {{syncfile}}
+                </td>
               </tr>
               {% endfor %}
               {% endif %}
@@ -205,8 +207,8 @@
       </div>
     </div>
     </form>
-    <div id="footer" style="background-color: #eee;">
-      <p style="text-align: center;">&copy Dassai Software</p>
+    <div id="footer">
+      <p>&copy Dassai Software</p>
     </div>
     <script src="assets/js/bootstrap.js">
     </script>

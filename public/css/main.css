@@ -5,18 +5,22 @@
    ========================================================================== */
 
 
+.version_info {
+	padding-top: 12px;
+}
+
+.version_info p {
+	float:left;
+	padding-left: 15px;
+}
 
 
+#footer {
+	background-color: #A5B4C0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+#footer {
+	text-align: center;
+	color: #E6EFFF;
+	padding: 20px 0;
+}
