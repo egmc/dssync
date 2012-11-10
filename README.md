@@ -2,6 +2,10 @@
 
 DsSync provdes rsync's web interface for deploy
 
+## screenshot
+
+![dssync image](http://cloud.github.com/downloads/egmc/dssync/dssync-image.png)
+
 ## usage
 
 ### dependencies
