@@ -1,4 +1,5 @@
 <?php
+namespace DsSync;
 /**
  * DsSyncクラス
  *
@@ -361,6 +362,9 @@ class DsSync {
 		
 		$lines    = explode("\n", $r);
 		foreach($lines as $line) {
+			if(preg_match('/^sending/', $line)) {
+				continue;
+			}
 			if(preg_match('/^building/', $line)) {
 				continue;
 			}
@@ -398,10 +402,10 @@ class DsSync {
 /**
  * コンフィグエラー
  */
-class DsSyncConfException extends Exception{}
+class DsSyncConfException extends \Exception{}
 
 /**
  * その他のエラー
  */
-class DsSyncException extends Exception{}
+class DsSyncException extends \Exception{}
 
