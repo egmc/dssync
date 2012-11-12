@@ -61,8 +61,10 @@ $template = $twigenv->loadTemplate(DS_SYNC_TEMPLATE_FILE);
 $parser = new Parser();
 $conf = $parser->parse(file_get_contents(DS_SYNC_CONF));
 
+// メーラーをセット
+
 // シンク部品オブジェクト生成
-$dssync = new DsSync($conf);
+$dssync = new DsSync($conf, Swift_Mailer::newInstance(Swift_MailTransport::newInstance()), Swift_Message::newInstance());
 
 // タイトル
 $data['title'] = $conf['title'];

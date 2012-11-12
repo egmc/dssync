@@ -3,7 +3,18 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.navbar-inverse {
+	color: #777777;
+}
 
+.navbar {
+	background-color: #2B313B;
+}
+
+.navbar-inverse .navbar-inner {
+	background: none;
+	border: none;
+}
 
 .version_info {
 	padding-top: 12px;
@@ -16,11 +27,8 @@
 
 
 #footer {
-	background-color: #A5B4C0;
-}
-
-#footer {
+	background-color: #A7A7A2;
 	text-align: center;
-	color: #E6EFFF;
+	color: #454543;
 	padding: 20px 0;
 }

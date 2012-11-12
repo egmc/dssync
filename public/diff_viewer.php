@@ -1,8 +1,9 @@
 <?php
+require dirname( __DIR__)  . "/vendor/autoload.php";
 /**
  * DiffViewer
  *
- * 二つのファイルをパラメータで受け取り差分を表示しますよ
+ * 二つのファイルをパラメータで受け取り差分を表示します
  * そのうちもうちょっとまともな見た目にするかもしれません
  */
 require_once 'Text/Diff.php';
