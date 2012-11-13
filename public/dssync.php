@@ -99,7 +99,7 @@ switch ($mode) {
 	
 	case "checkout":
 		//レポジトリからエクスポート
-		$ret  = $dssync->svnExport();
+		$ret  = $dssync->clearTargetDir()->svnExport();
 		$server_list = $dssync->getServerList();
 		$data['server_list'] = $server_list;
 		
@@ -116,7 +116,7 @@ switch ($mode) {
 		}
 		
 		// チェック実行＆サーバーリスト取得
-		$server_list = $dssync->checkSync()->getServerList();
+		$server_list = $dssync->clearTargetDir()->checkSync()->getServerList();
 		$data['server_list'] = $server_list;
 		
 		$file_list = $dssync->getFirstServerResultList();
@@ -146,7 +146,7 @@ switch ($mode) {
 		}
 		
 		// シンク実行＆サーバーリスト取得
-		$server_list = $dssync->sync()->getServerList();
+		$server_list = $dssync->clearTargetDir()->sync()->getServerList();
 		$data['server_list'] = $server_list;
 		$file_list = $dssync->getFirstServerResultList();
 		//$log->debug($file_list);
