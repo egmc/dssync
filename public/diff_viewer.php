@@ -37,7 +37,7 @@ if (!is_readable($f2)) {
 $file1 = file($f1);
 $file2 = file($f2);
 
-// diifる
+// diifを作成
 $diff = new Text_Diff('auto', array($file1, $file2));
 
 //$renderer = new Text_Diff_Renderer();
@@ -47,7 +47,6 @@ $renderer = new Text_Diff_Renderer_unified();
 
 $diff_str = $renderer->render($diff);
 
-//var_dump($renderer);
 echo "<pre>";
 echo $diff_str;
 echo "</pre>";

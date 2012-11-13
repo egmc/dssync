@@ -16,11 +16,23 @@ DsSync provdes rsync's web interface for deploy
 
 その他の依存関係はcomposer.json参照
 
+### installation
 
-### サーバーへの配備
+#### installing via composer
 
-上記依存関係が解決されていれば動きます。多分。
-設定ファイルを記述してpublic/dssync.phpにアクセスしてください。
+```
+curl -s http://getcomposer.org/installer | php
+php composer.phar create-project dssync/dssync
+```
+
+`conf/dssync.yaml`を作成して、シンクのための記述を行なってください。
+サンプルとして`conf/dssync.yaml.sample`を同梱しています。
+
+publicをwebサーバーからアクセス可能な状態にして`public/dssync.php`にアクセスするとシンク用の画面が表示されます。
+
+**ユーザー権限の設定などは必要に応じて行なってください**
+
+**DsSyncにはユーザー認証機構は実装されていないので、各Webサーバーの認証機構等を利用し、適切なアクセス制限を行うことを推奨します**
 
 
 ### 設定ファイル
