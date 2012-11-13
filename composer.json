@@ -1,6 +1,7 @@
 {
     "name": "dssync/dssync",
     "description": "dssync provides rsync's web interface for deploy",
+    "license": "MIT",
     "require": {
         "twig/twig": "v1.11.0",
         "symfony/yaml": "v2.1.3",
