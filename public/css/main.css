@@ -25,6 +25,30 @@
 	padding-left: 15px;
 }
 
+.add {
+	background-color: #A7FFA1;
+	color: #33AA2B;
+}
+
+.remove {
+	color: #FF2531;
+	background-color: #FFB19F;
+}
+
+.none {
+	background-color: #E8E4FF;
+	color: #7479AA;
+}
+
+.diff_line {
+	margin:0;
+	padding: 0;
+}
+
+.diff_check {
+	padding-left:  7px;
+}
+
 
 #footer {
 	background-color: #A7A7A2;

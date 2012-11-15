@@ -9,7 +9,7 @@ require dirname( __DIR__)  . "/vendor/autoload.php";
  * 汎用シンクプログラム
  * 使い方は同梱のREADMEをご参照ください
  *
- * @author eg
+ * @author egmc
  */
 ini_set('display_errors', 1);
 //-------------setting

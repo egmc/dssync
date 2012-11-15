@@ -117,7 +117,7 @@
               <tr>
                 {% if is_diff_enabled %}
                   <td>
-                    <input name="exclude_file_list[]" value="{{syncfile}}" type="checkbox"{% if dir.is_checked %} checked="checked"{% endif %} /><a href="{{diff_viewer}}?f2={{diff_from_prefix}}{{syncfile}}&f1={{diff_to_prefix}}{{syncfile}}" target="_blank">{{syncfile}}</a>
+                    <input class="checkbox" name="exclude_file_list[]" value="{{syncfile}}" type="checkbox"{% if dir.is_checked %} checked="checked"{% endif %} /><a href="{{diff_viewer}}?f1={{diff_from_prefix}}{{syncfile}}&f2={{diff_to_prefix}}{{syncfile}}" target="_blank" class="diff_check">{{syncfile}}</a>
                   </td>
                 {% else %}
                 <td><input name="exclude_file_list[]" value="{{syncfile}}" type="checkbox"{% if dir.is_checked %} checked="checked"{% endif %} /> {{syncfile}}</td>
@@ -134,7 +134,7 @@
               <tr>
                 <td>
                   <input name="exclude_file_list[]" value="{{syncfile}}" type="checkbox"{% if dir.is_checked %} checked="checked"{% endif %} />
-                  {{syncfile}}
+                  <span class="diff_check">{{syncfile}}</span>
                 </td>
               </tr>
               {% endfor %}

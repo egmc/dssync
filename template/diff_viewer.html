@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {{title}} - DsSync
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding-top: 42px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+  
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="{{self}}">
+            {{title}} - DsSync
+          </a>
+          <div class="version_info">
+            <p>{{dssync_version}}</p>
+            <p>{{rsync_version}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    {% if messages or errors %}
+    <div class="alert">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="message">{{message}}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if errors %}
+        <ul class="errors">
+          {% for error in errors %}
+          <li class="error">{{error}}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {%if diff_enabled %}
+
+      <div class="row">
+      	<div class="span12">
+      		<h2>permission</h2>
+      		<div class="span10">
+      		<p>
+      			{{f1}}
+      		</p>
+       		<p>
+      			{{perm1}}
+      		</p>
+      		<p>
+      			{{f2}}
+      		</p>
+       		<p>
+      			{{perm2}}
+      		</p>
+     	 	</div>
+
+      	</div>
+      	<div class="span12">
+      		<h2>diff</h2>
+      		<div class="span10">
+      			{% for rec in diff_lines %}
+      			<p class="{{rec.type}} diff_line">{{ rec.line }}</p>
+      			{% endfor %}
+      		</div>
+
+      	</div>
+      </div>
+      {% endif %}
+      <br />
+    </div>
+    <div id="footer">
+      <p>&copy Dassai Software</p>
+    </div>
+    <script src="js/vendor/bootstrap.js">
+    </script>
+  </body>
+
+</html>
